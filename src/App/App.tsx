@@ -1,3 +1,3 @@
 export default function App() {
-  return <>App</>;
+  return <>Contacts</>;
 }

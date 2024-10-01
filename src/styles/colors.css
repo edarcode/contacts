@@ -1,27 +1,27 @@
 :root {
   /* Dark mode */
-  --bg-pri: #121212; /* Fondo Principal - un negro profundo para resaltar elementos */
-  --bg-surf: #1e1e1e; /* Superficie - gris oscuro para diferenciar secciones */
-  --pri: #3a86ff; /* Primario - un azul neutro que es vibrante pero no demasiado fuerte */
-  --sec: #8d99ae; /* Secundario - un gris azulado, calmado y profesional */
-  --t-pri: #e0e0e0; /* Texto Principal - blanco roto para una mejor legibilidad */
-  --t-sec: #a4a4a4; /* Texto Secundario - gris medio para subtítulos y detalles secundarios */
-  --hl: #ffbc42; /* Resaltado - un tono amarillo dorado para capturar la atención sin ser abrumador */
-  --border: #2c2c2c; /* Borde - gris oscuro para una separación sutil */
-  --accent: #ef476f; /* Acento - un rojo apagado para botones y elementos interactivos */
-  --hover: #5f9eff; /* Hover - un azul más claro del primario para interactividad */
+  --bg-pri: #0f0f0f; /* Fondo Principal */
+  --bg-surf: #242424; /* Superficie */
+  --pri: #ff6f61; /* Primario */
+  --sec: #ffd166; /* Secundario */
+  --t-pri: #ffffff; /* Texto Principal */
+  --t-sec: #b0bec5; /* Texto Secundario */
+  --hl: #ffb74d; /* Resaltado */
+  --border: #383838; /* Borde */
+  --accent: #f06292; /* Acento */
+  --hover: #ff8a75; /* Hover */
 
   /* Light mode */
-  --l-bg-pri: #f5f5f5; /* Fondo Principal - gris claro para suavizar la luz */
-  --l-bg-surf: #e0e0e0; /* Superficie - gris suave para diferenciación de elementos */
-  --l-pri: #2a9d8f; /* Primario - un verde azulado, fresco pero neutro */
-  --l-sec: #4a4a4a; /* Secundario - gris oscuro para subtítulos o menos importantes */
-  --l-t-pri: #212121; /* Texto Principal - gris muy oscuro para buena legibilidad */
-  --l-t-sec: #636363; /* Texto Secundario - gris medio para texto menos importante */
-  --l-hl: #ffbc42; /* Resaltado - mismo tono dorado para coherencia */
-  --l-border: #cccccc; /* Borde - gris claro para definición sutil */
-  --l-accent: #ef476f; /* Acento - un tono rojo sutil para detalles y botones */
-  --l-hover: #3c91e6; /* Hover - azul más claro del acento para interactividad */
+  --l-bg-pri: #ffffff; /* Fondo Principal */
+  --l-bg-surf: #f0f0f0; /* Superficie */
+  --l-pri: #ff6f61; /* Primario */
+  --l-sec: #ffd166; /* Secundario */
+  --l-t-pri: #212121; /* Texto Principal */
+  --l-t-sec: #757575; /* Texto Secundario */
+  --l-hl: #ffb74d; /* Resaltado */
+  --l-border: #e0e0e0; /* Borde */
+  --l-accent: #ec407a; /* Acento */
+  --l-hover: #ff8a75; /* Hover */
 
   /* Common */
   --blue: #0066cc;

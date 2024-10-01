@@ -1,0 +1,11 @@
+:root {
+  /* Dark mode*/
+  --s-main: 0 2px 4px rgba(0, 0, 0, 0.6); /* Sombra principal para botones, tarjetas, etc. */
+  --s-hover: 0 1px 2px rgba(0, 0, 0, 0.8); /* Sombra para estados de hover, un poco más intensa */
+  --s-inset: inset 0 2px 4px rgba(0, 0, 0, 0.7); /* Sombra interna para efectos de profundidad */
+
+  /* light mode */
+  --l-s-main: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra principal para elementos */
+  --l-s-hover: 0 1px 2px rgba(0, 0, 0, 0.2); /* Sombra para estados de hover */
+  --l-s-inset: inset 0 2px 4px rgba(0, 0, 0, 0.15); /* Sombra interna para efectos de profundidad */
+}

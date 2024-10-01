@@ -1,0 +1,43 @@
+:root {
+	/* Dark mode */
+	--bg-main: #121212; /* Fondo Principal - un negro profundo para resaltar elementos */
+	--bg-surf: #1e1e1e; /* Superficie - gris oscuro para diferenciar secciones */
+	--pri: #3a86ff; /* Primario - un azul neutro que es vibrante pero no demasiado fuerte */
+	--sec: #8d99ae; /* Secundario - un gris azulado, calmado y profesional */
+	--t-main: #e0e0e0; /* Texto Principal - blanco roto para una mejor legibilidad */
+	--t-sec: #a4a4a4; /* Texto Secundario - gris medio para subtítulos y detalles secundarios */
+	--hl: #ffbc42; /* Resaltado - un tono amarillo dorado para capturar la atención sin ser abrumador */
+	--border: #2c2c2c; /* Borde - gris oscuro para una separación sutil */
+	--accent: #ef476f; /* Acento - un rojo apagado para botones y elementos interactivos */
+	--hover: #5f9eff; /* Hover - un azul más claro del primario para interactividad */
+
+	/* Light mode */
+	--l-bg-main: #f5f5f5; /* Fondo Principal - gris claro para suavizar la luz */
+	--l-bg-surf: #e0e0e0; /* Superficie - gris suave para diferenciación de elementos */
+	--l-pri: #2a9d8f; /* Primario - un verde azulado, fresco pero neutro */
+	--l-sec: #4a4a4a; /* Secundario - gris oscuro para subtítulos o menos importantes */
+	--l-t-main: #212121; /* Texto Principal - gris muy oscuro para buena legibilidad */
+	--l-t-sec: #636363; /* Texto Secundario - gris medio para texto menos importante */
+	--l-hl: #ffbc42; /* Resaltado - mismo tono dorado para coherencia */
+	--l-border: #cccccc; /* Borde - gris claro para definición sutil */
+	--l-accent: #ef476f; /* Acento - un tono rojo sutil para detalles y botones */
+	--l-hover: #3c91e6; /* Hover - azul más claro del acento para interactividad */
+
+	/* Common */
+	--blue: #0066cc;
+	--red: #cd231d;
+	--green: #8c9900;
+}
+
+/*
+	Razones para esta Paleta:
+	Tonos Neutrales y Modernos: Colores como azul neutro, verde azulado, y grises proporcionan un aspecto profesional, moderno y accesible para cualquier tipo de público.
+
+	Contraste Adecuado: Los colores seleccionados aseguran que haya suficiente contraste entre los fondos y los textos, mejorando la legibilidad sin ser agresivos para la vista.
+
+	Toques de Color Sobrios: Los colores de acento, como el rojo apagado y el dorado, proporcionan puntos de interés visual sin ser demasiado llamativos, manteniendo un equilibrio entre lo atractivo y lo sutil.
+
+	Cohesión entre Modos: Al mantener una coherencia en los tonos de resaltado y acento entre los modos oscuro y claro, se asegura una experiencia de usuario fluida y atractiva en cualquier entorno.
+
+	Esta paleta debería ser más adecuada para una audiencia que busca un diseño más neutro y equilibrado.
+*/

@@ -3,20 +3,20 @@ import { REGEX } from "../regex/regex";
 
 export const nameSchema = z
   .string()
-  .min(1)
-  .max(50)
+  .min(1, { message: "Mín 1 digíto." })
+  .max(50, { message: "Max 50 digítos." })
   .refine((name) => !REGEX.mayus.test(name), {
-    message: "No capital letters",
+    message: "Sin mayus.",
   })
   .refine((name) => !REGEX.startWithSpace.test(name), {
-    message: "No start with space",
+    message: "No empezar con espacios.",
   })
   .refine((name) => !REGEX.endWithSpace.test(name), {
-    message: "No end with space",
+    message: "No finalizar con espacios.",
   })
   .refine((name) => !REGEX.specialCharacters.test(name), {
-    message: "No special characters",
+    message: "Sin carácteres especiales.",
   })
   .refine((name) => !REGEX.numbers.test(name), {
-    message: "No numbers",
+    message: "Sin números.",
   });

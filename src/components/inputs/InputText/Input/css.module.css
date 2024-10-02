@@ -1,0 +1,41 @@
+.label {
+	position: relative;
+}
+
+.input {
+	width: 100%;
+	border: 1px solid transparent;
+	border-radius: var(--sm);
+	padding: var(--sm) var(--md);
+	min-height: 38px;
+	outline: transparent;
+	background-color: var(--bg-surf);
+	color: var(--t-sec);
+}
+
+.input:focus {
+	outline: 1px solid var(--pri);
+	border: 1px solid transparent;
+}
+
+.input::placeholder {
+	color: var(--grey);
+}
+
+.input__err {
+	border: 1px solid var(--red);
+}
+
+.input__state {
+	padding-right: calc(var(--md) + 20px);
+}
+
+@media (prefers-color-scheme: light) {
+	.input {
+		background-color: var(--l-bg-surf);
+		color: var(--l-t-sec);
+	}
+	.input:focus {
+		outline: 1px solid var(--l-pri);
+	}
+}

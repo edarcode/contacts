@@ -1,0 +1,32 @@
+.link,
+.active {
+  padding: var(--sm);
+  border-radius: var(--sm);
+  transition: color 0.3s ease;
+  color: var(--t-sec);
+}
+
+.link:hover,
+.active:hover {
+  color: var(--pri);
+}
+
+.active {
+  color: var(--pri);
+}
+
+@media (prefers-color-scheme: light) {
+  .link,
+  .active {
+    color: var(--l-t-sec);
+  }
+
+  .link:hover,
+  .active:hover {
+    color: var(--l-pri);
+  }
+
+  .active {
+    color: var(--l-pri);
+  }
+}

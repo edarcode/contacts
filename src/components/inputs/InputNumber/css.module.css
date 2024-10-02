@@ -1,0 +1,58 @@
+/* Para quitar las flechas en Chrome, Safari, Edge, y Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Para Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+.label {
+	--size-err: 20px;
+
+	display: grid;
+	gap: var(--xs);
+	cursor: text;
+	width: 125px;
+}
+
+.title {
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.input {
+	width: 100%;
+	border: 1px solid transparent;
+	border-radius: var(--sm);
+	padding: var(--sm) var(--md);
+	min-height: 38px;
+	outline: transparent;
+}
+
+.input:focus {
+	outline: 1px solid var(--pri);
+}
+
+.input::placeholder {
+	color: var(--grey);
+}
+
+.primary {
+	background-color: var(--bg-surf);
+	color: var(--t-sec);
+}
+
+@media (prefers-color-scheme: light) {
+	.input:focus {
+		outline: 1px solid var(--l-pri);
+	}
+
+	.primary {
+		background-color: var(--l-bg-surf);
+		color: var(--l-t-sec);
+	}
+}

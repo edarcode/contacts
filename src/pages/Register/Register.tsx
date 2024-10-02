@@ -7,8 +7,18 @@ import { HOME } from "../../router/children";
 import css from "./css.module.css";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "./registerSchema";
+import { useFetch } from "../../hooks/useFetch";
+import {
+  RegisterPayload,
+  RegisterRes,
+  registerService,
+} from "./registerService";
 
 export default function Register() {
+  const { loading, err, startFetch } = useFetch<RegisterPayload, RegisterRes>(
+    registerService
+  );
+
   const {
     register,
     handleSubmit,
@@ -16,7 +26,7 @@ export default function Register() {
   } = useForm({ resolver: zodResolver(registerSchema) });
 
   const onSubmit = (credentials: any) => {
-    console.log(credentials);
+    startFetch(credentials);
   };
 
   return (
@@ -35,7 +45,13 @@ export default function Register() {
         <span className={css.wrapper_register}>
           ¿Ya tiene cuenta?<LinkTo to={HOME.to}>Iniciar sesión</LinkTo>
         </span>
-        <Btn disabled={!!Object.keys(errors).length}>Registrarse</Btn>
+        <Btn
+          disabled={!!Object.keys(errors).length || loading}
+          loading={loading}
+          err={!!err}
+        >
+          Registrarse
+        </Btn>
       </form>
     </div>
   );

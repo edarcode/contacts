@@ -5,45 +5,49 @@ const initFetchState = {
   err: undefined,
   loading: false,
   payload: undefined,
-  data: undefined,
+  res: undefined,
 };
 
-export const useFetch = <Payload, Data>(fetch: Fetch<Payload, Data>) => {
+export const useFetch = <Payload, Res>(fetch: Fetch<Payload, Res>) => {
   const [fetchState, setFetchState] =
-    useState<FetchState<Payload, Data>>(initFetchState);
-
-  const { err, loading, payload, data } = fetchState;
+    useState<FetchState<Payload, Res>>(initFetchState);
 
   useEffect(() => {
-    if (!loading) return;
+    if (!fetchState.loading) return;
+
     const controller = new AbortController();
 
-    fetch({ signal: controller.signal, payload })
-      .then((data) => setFetchState({ ...initFetchState, data }))
+    fetch({ signal: controller.signal, payload: fetchState.payload })
+      .then((res) => setFetchState({ ...initFetchState, res }))
       .catch((err: EdarErr) => setFetchState({ ...initFetchState, err }));
 
     return () => controller.abort();
-  }, [fetch, loading, payload]);
+  }, [fetch, fetchState]);
 
   const startFetch = (payload?: Payload) => {
     setFetchState({ ...initFetchState, payload, loading: true });
   };
 
-  return { data, loading, err, startFetch };
+  return {
+    res: fetchState.res,
+    loading: fetchState.loading,
+    err: fetchState.err,
+    startFetch,
+  };
 };
 
-export type Fetch<Payload, Data> = (
+export type Fetch<Payload, Res> = (
   params: FetchParams<Payload>
-) => Promise<Data>;
+) => Promise<Res>;
 
 type FetchParams<Payload> = {
   signal: AbortSignal;
   payload?: Payload;
 };
 
-type FetchState<Payload, Data> = {
+type FetchState<Payload, Res> = {
   err: EdarErr | undefined;
   loading: boolean;
   payload: Payload | undefined;
-  data: Data | undefined;
+  res: Res | undefined;
 };

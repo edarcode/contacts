@@ -17,6 +17,11 @@
 		color: var(--grey);
 		border: 1px solid var(--grey);
 	}
+
+	transition: transform 0.1s ease;
+	&:active {
+		transform: scale(0.97);
+	}
 }
 
 .btn__err {

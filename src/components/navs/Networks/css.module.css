@@ -1,0 +1,14 @@
+.networks {
+	display: flex;
+	gap: var(--md);
+}
+
+.networks img {
+	transition: transform 1s ease;
+	width: 28px;
+	height: 28px;
+}
+
+.networks img:hover {
+	transform: scale(1.2);
+}

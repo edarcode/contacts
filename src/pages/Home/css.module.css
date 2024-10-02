@@ -1,8 +1,11 @@
 .home {
-	display: grid;
-	gap: var(--lg);
-}
+  display: grid;
+  height: 100%;
+  place-content: center;
 
-.titles {
-	padding: 0 var(--lg);
+  .login {
+    width: 300px;
+    display: grid;
+    gap: var(--md);
+  }
 }

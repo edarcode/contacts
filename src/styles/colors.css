@@ -1,6 +1,6 @@
 :root {
   /* Dark mode */
-  --bg-pri: #0f0f0f; /* Fondo Principal */
+  --bg-main: #0f0f0f; /* Fondo Principal */
   --bg-surf: #242424; /* Superficie */
   --pri: #ff6f61; /* Primario */
   --sec: #ffd166; /* Secundario */
@@ -12,7 +12,7 @@
   --hover: #ff8a75; /* Hover */
 
   /* Light mode */
-  --l-bg-pri: #ffffff; /* Fondo Principal */
+  --l-bg-main: #ffffff; /* Fondo Principal */
   --l-bg-surf: #f0f0f0; /* Superficie */
   --l-pri: #ff6f61; /* Primario */
   --l-sec: #ffd166; /* Secundario */

@@ -1,0 +1,35 @@
+.label {
+	position: relative;
+}
+
+.input {
+	min-height: 38px;
+	width: 100%;
+	border: none;
+	outline: transparent;
+	box-shadow: var(--sm);
+	border-radius: var(--sm);
+	padding: var(--sm) var(--md);
+	padding-right: calc(var(--md) + 20px); /*20px size svg de estado*/
+	background-color: var(--bg-surf);
+	color: var(--t-sec);
+}
+
+.input:focus {
+	outline: 1px solid var(--pri);
+	border: 1px solid transparent;
+}
+
+.input__err {
+	border: 1px solid var(--red);
+}
+
+@media (prefers-color-scheme: light) {
+	.input {
+		background-color: var(--l-bg-surf);
+		color: var(--l-t-sec);
+	}
+	.input:focus {
+		outline: 1px solid var(--l-pri);
+	}
+}

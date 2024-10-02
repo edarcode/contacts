@@ -8,4 +8,12 @@
     display: grid;
     gap: var(--md);
   }
+
+  .wrapper_register {
+    padding-top: var(--lg);
+
+    a {
+      color: var(--pri);
+    }
+  }
 }

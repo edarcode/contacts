@@ -2,10 +2,10 @@ import { CONTACTS_BACK_URL } from "../../consts/urls";
 import { EdarErr } from "../../errors/EdarErr";
 import { Fetch } from "../../hooks/useFetch";
 
-export const registerService: RegisterService = async (params) => {
+export const loginService: LoginService = async (params) => {
   const { signal, payload } = params;
 
-  const res = await fetch(CONTACTS_BACK_URL.register, {
+  const res = await fetch(CONTACTS_BACK_URL.login, {
     signal,
     method: "POST",
     headers: {
@@ -17,13 +17,13 @@ export const registerService: RegisterService = async (params) => {
   if (!res.ok) {
     throw new EdarErr({
       status: res.status,
-      msg: "Err al registrar un usuario.",
+      msg: "Err al iniciar sessión.",
     });
   }
 
   return await res.json();
 };
 
-type RegisterService = Fetch<RegisterPayload, RegisterRes>;
-export type RegisterPayload = { email: string; password: string };
-export type RegisterRes = { msg: string };
+type LoginService = Fetch<LoginPayload, LoginRes>;
+export type LoginPayload = { email: string; password: string };
+export type LoginRes = { token: string };

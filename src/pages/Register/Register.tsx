@@ -61,7 +61,7 @@ export default function Register() {
         <Ad
           isVisible={!!res}
           message="Hemos enviado un correo para cofirmar su registro."
-          onClose={() => navigate(HOME.to)}
+          action={() => navigate(HOME.to)}
         />
       </form>
     </div>

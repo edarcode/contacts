@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import LinkTo from "../../components/links/LinkTo/LinkTo";
 import { CONTACTS, HOME } from "../../router/children";
+import LinkToAccount from "../../auth/LinkToAccount/LinkToAccount";
 
 export default function Header() {
   return (
@@ -14,6 +15,7 @@ export default function Header() {
         </Link>
         <LinkTo to={HOME.to}>{HOME.display}</LinkTo>
         <LinkTo to={CONTACTS.to}>{CONTACTS.display}</LinkTo>
+        <LinkToAccount />
       </nav>
     </header>
   );

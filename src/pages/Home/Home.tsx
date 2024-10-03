@@ -12,8 +12,11 @@ import { useFetch } from "../../hooks/useFetch";
 import { LoginPayload, LoginRes, loginService } from "./loginService";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../auth/useAuth";
 
 export default function Home() {
+  const updateToken = useAuth((auth) => auth.updateToken);
+
   const { loading, err, res, startFetch } = useFetch<LoginPayload, LoginRes>(
     loginService
   );
@@ -22,9 +25,9 @@ export default function Home() {
 
   useEffect(() => {
     if (!res) return;
-
+    updateToken(res.token);
     navidate(CONTACTS.to);
-  }, [res, navidate]);
+  }, [res, navidate, updateToken]);
 
   const {
     register,

@@ -1,0 +1,12 @@
+.home {
+  display: grid;
+  place-content: center;
+  height: 100%;
+
+  .about {
+    max-width: 500px;
+    display: grid;
+    gap: var(--lg);
+    justify-items: start;
+  }
+}

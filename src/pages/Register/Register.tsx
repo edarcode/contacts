@@ -3,7 +3,7 @@ import Btn from "../../components/buttons/Btn/Btn";
 import InputPassword from "../../components/inputs/InputPassword/InputPassword";
 import InputText from "../../components/inputs/InputText/InputText";
 import LinkTo from "../../components/links/LinkTo/LinkTo";
-import { CONTACTS, HOME } from "../../router/children";
+import { CONTACTS, LOGIN } from "../../router/children";
 import css from "./css.module.css";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "./registerSchema";
@@ -49,7 +49,7 @@ export default function Register() {
           err={errors?.password?.message as string}
         />
         <span className={css.wrapper_register}>
-          ¿Ya tiene cuenta?<LinkTo to={HOME.to}>Iniciar sesión</LinkTo>
+          ¿Ya tiene cuenta?<LinkTo to={LOGIN.to}>Iniciar sesión</LinkTo>
         </span>
         <Btn
           disabled={!!Object.keys(errors).length || loading || !!res}

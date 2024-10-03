@@ -13,6 +13,7 @@ import {
   RegisterRes,
   registerService,
 } from "./registerService";
+import { z } from "zod";
 
 export default function Register() {
   const { loading, err, startFetch } = useFetch<RegisterPayload, RegisterRes>(
@@ -23,9 +24,9 @@ export default function Register() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: zodResolver(registerSchema) });
+  } = useForm<RegisterForm>({ resolver: zodResolver(registerSchema) });
 
-  const onSubmit = (credentials: any) => {
+  const onSubmit = (credentials: RegisterForm) => {
     startFetch(credentials);
   };
 
@@ -56,3 +57,5 @@ export default function Register() {
     </div>
   );
 }
+
+type RegisterForm = z.infer<typeof registerSchema>;

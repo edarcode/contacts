@@ -22,6 +22,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!res) return;
+
     navidate(CONTACTS.to);
   }, [res, navidate]);
 

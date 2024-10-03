@@ -1,0 +1,47 @@
+.btn {
+  --size-err: 20px;
+  position: relative;
+  border: 1px solid transparent;
+  padding: var(--sm) var(--md);
+  cursor: pointer;
+  min-width: 125px;
+  min-height: 38px;
+  border-radius: var(--md);
+  display: grid;
+  place-items: center;
+  color: var(--t-main);
+
+  &:disabled {
+    cursor: initial;
+    background-color: transparent;
+    color: var(--grey);
+    border: 1px solid var(--grey);
+  }
+
+  transition: transform 0.1s ease;
+  &:active&:not(:disabled) {
+    transform: scale(0.97);
+  }
+}
+
+.btn__err {
+  padding-right: calc(var(--size-err) + var(--md));
+}
+
+.primary {
+  background-color: var(--pri);
+}
+
+.secondary {
+  background-color: var(--sec);
+}
+
+@media (prefers-color-scheme: light) {
+  .primary {
+    background-color: var(--l-pri);
+  }
+
+  .secondary {
+    background-color: var(--l-sec);
+  }
+}

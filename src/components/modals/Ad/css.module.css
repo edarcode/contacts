@@ -1,0 +1,18 @@
+.ad {
+  background-color: var(--bg-surf);
+  padding: var(--lg);
+  width: 240px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  gap: var(--md);
+  border-radius: var(--md);
+}
+
+@media (prefers-color-scheme: light) {
+  .ad {
+    background-color: var(--l-bg-surf);
+  }
+}

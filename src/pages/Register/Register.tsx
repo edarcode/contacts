@@ -14,11 +14,14 @@ import {
   registerService,
 } from "./registerService";
 import { z } from "zod";
+import Ad from "../../components/modals/Ad/Ad";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
-  const { loading, err, startFetch } = useFetch<RegisterPayload, RegisterRes>(
-    registerService
-  );
+  const { loading, err, res, startFetch } = useFetch<
+    RegisterPayload,
+    RegisterRes
+  >(registerService);
 
   const {
     register,
@@ -29,6 +32,8 @@ export default function Register() {
   const onSubmit = (credentials: RegisterForm) => {
     startFetch(credentials);
   };
+
+  const navigate = useNavigate();
 
   return (
     <div className={css.register}>
@@ -47,12 +52,17 @@ export default function Register() {
           ¿Ya tiene cuenta?<LinkTo to={HOME.to}>Iniciar sesión</LinkTo>
         </span>
         <Btn
-          disabled={!!Object.keys(errors).length || loading}
+          disabled={!!Object.keys(errors).length || loading || !!res}
           loading={loading}
           err={!!err}
         >
           Registrarse
         </Btn>
+        <Ad
+          isVisible={!!res}
+          message="Hemos enviado un correo para cofirmar su registro."
+          onClose={() => navigate(HOME.to)}
+        />
       </form>
     </div>
   );

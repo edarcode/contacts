@@ -4,6 +4,7 @@
   place-content: center;
 
   .form {
+    position: relative;
     width: 300px;
     display: grid;
     gap: var(--md);

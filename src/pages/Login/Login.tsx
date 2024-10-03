@@ -1,42 +1,46 @@
-import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Btn from "../../components/buttons/Btn/Btn";
 import InputPassword from "../../components/inputs/InputPassword/InputPassword";
 import InputText from "../../components/inputs/InputText/InputText";
 import LinkTo from "../../components/links/LinkTo/LinkTo";
-import { CONTACTS, HOME } from "../../router/children";
+import { CONTACTS, REGISTER } from "../../router/children";
 import css from "./css.module.css";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { registerSchema } from "./registerSchema";
-import { useFetch } from "../../hooks/useFetch";
-import {
-  RegisterPayload,
-  RegisterRes,
-  registerService,
-} from "./registerService";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
-import Ad from "../../components/modals/Ad/Ad";
+import { useFetch } from "../../hooks/useFetch";
+import { LoginPayload, LoginRes, loginService } from "./loginService";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../auth/useAuth";
+import { loginSchema } from "./loginSchema";
 
-export default function Register() {
-  const { loading, err, res, startFetch } = useFetch<
-    RegisterPayload,
-    RegisterRes
-  >(registerService);
+export default function Login() {
+  const updateToken = useAuth((auth) => auth.updateToken);
+
+  const { loading, err, res, startFetch } = useFetch<LoginPayload, LoginRes>(
+    loginService
+  );
+
+  const navidate = useNavigate();
+
+  useEffect(() => {
+    if (!res) return;
+    updateToken(res.token);
+    navidate(CONTACTS.to);
+  }, [res, navidate, updateToken]);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterForm>({ resolver: zodResolver(registerSchema) });
+  } = useForm<LoginForm>({ resolver: zodResolver(loginSchema) });
 
-  const onSubmit = (credentials: RegisterForm) => {
+  const onSubmit = (credentials: LoginForm) => {
     startFetch(credentials);
   };
 
-  const navigate = useNavigate();
-
   return (
-    <div className={css.register}>
+    <div className={css.login}>
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
         <InputText
           placeholder="ejemplo@gmail.com"
@@ -49,23 +53,18 @@ export default function Register() {
           err={errors?.password?.message as string}
         />
         <span className={css.wrapper_register}>
-          ¿Ya tiene cuenta?<LinkTo to={HOME.to}>Iniciar sesión</LinkTo>
+          ¿No tiene cuenta?<LinkTo to={REGISTER.to}>Registrarse</LinkTo>
         </span>
         <Btn
           disabled={!!Object.keys(errors).length || loading || !!res}
           loading={loading}
           err={!!err}
         >
-          Registrarse
+          Iniciar sesión
         </Btn>
-        <Ad
-          isVisible={!!res}
-          message="Hemos enviado un correo para cofirmar su registro."
-          action={() => navigate(CONTACTS.to)}
-        />
       </form>
     </div>
   );
 }
 
-type RegisterForm = z.infer<typeof registerSchema>;
+type LoginForm = z.infer<typeof loginSchema>;

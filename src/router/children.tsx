@@ -1,6 +1,8 @@
 import Contacts from "../pages/Contacts/Contacts";
 import Home from "../pages/Home/Home";
+import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import RouteProtector from "./RouterProtector";
 
 export const HOME = {
   id: crypto.randomUUID(),
@@ -18,10 +20,22 @@ export const REGISTER = {
   element: <Register />,
 };
 
+export const LOGIN = {
+  id: crypto.randomUUID(),
+  path: "login",
+  to: "/login",
+  display: "Login",
+  element: <Login />,
+};
+
 export const CONTACTS = {
   id: crypto.randomUUID(),
   path: "contacts",
   to: "/contacts",
   display: "Contactos",
-  element: <Contacts />,
+  element: (
+    <RouteProtector>
+      <Contacts />
+    </RouteProtector>
+  ),
 };

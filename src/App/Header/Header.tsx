@@ -3,7 +3,7 @@ import Logo from "../../components/logos/Logo/Logo";
 import { Link } from "react-router-dom";
 
 import LinkTo from "../../components/links/LinkTo/LinkTo";
-import { HOME } from "../../router/children";
+import { CONTACTS, HOME } from "../../router/children";
 
 export default function Header() {
   return (
@@ -13,6 +13,7 @@ export default function Header() {
           <Logo />
         </Link>
         <LinkTo to={HOME.to}>{HOME.display}</LinkTo>
+        <LinkTo to={CONTACTS.to}>{CONTACTS.display}</LinkTo>
       </nav>
     </header>
   );

@@ -8,7 +8,7 @@ type Auth = {
   getTokenPayload: () => TokenPayload | void;
   removeToken: () => void;
   updateToken: (token: string) => void;
-  refreshToken: (signal: AbortSignal) => void;
+  refreshToken: (signal: AbortSignal) => Promise<void>;
 };
 
 export const useAuth = create<Auth>()(

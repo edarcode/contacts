@@ -1,0 +1,35 @@
+.contact {
+  padding: var(--md);
+  display: grid;
+  grid-template-columns: auto 1fr 150px 28px 28px;
+  align-items: center;
+
+  .name {
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+
+  .name,
+  .tell {
+    padding: var(--sm);
+  }
+
+  .img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+
+  .delete {
+    color: var(--red);
+  }
+
+  .edit {
+    color: var(--gray);
+  }
+
+  .edit,
+  .delete {
+    justify-self: center;
+  }
+}

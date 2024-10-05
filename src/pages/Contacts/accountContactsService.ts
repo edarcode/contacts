@@ -30,16 +30,16 @@ type Params = {
   token?: string | null;
 };
 
-interface Contact {
+export type Contact = {
   id: string;
   name: string;
   img: string | null;
   tell: string;
-}
+};
 
-interface AccountContacts {
+type AccountContacts = {
   limit: number;
   page: number;
   records: Contact[];
   totalPages: number;
-}
+};

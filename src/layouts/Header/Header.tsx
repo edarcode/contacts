@@ -1,7 +1,6 @@
 import css from "./css.module.css";
 import Logo from "../../components/logos/Logo/Logo";
 import { Link } from "react-router-dom";
-
 import LinkTo from "../../components/links/LinkTo/LinkTo";
 import { CONTACTS, HOME } from "../../router/children";
 import LinkToAccount from "../../auth/LinkToAccount/LinkToAccount";

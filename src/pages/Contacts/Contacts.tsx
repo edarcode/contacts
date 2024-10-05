@@ -1,6 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { accountContactsService } from "./accountContactsService";
 import { useAuth } from "../../auth/useAuth";
+import Contact from "./Contact/Contact";
+import css from "./css.module.css";
+import Spinner from "../../components/spinners/Spinner/Spinner";
 
 export default function Contacts() {
   const token = useAuth((auth) => auth.token);
@@ -12,16 +15,17 @@ export default function Contacts() {
     staleTime: 1000 * 60 * 60 * 24,
   });
 
-  if (isLoading) return <div>Cargando...</div>;
-  if (!accountContacts?.records.length) return <div>No tiene contactos...</div>;
+  const isEmptyContacs = !isLoading && !accountContacts?.records.length;
+
   return (
-    <div>
-      {accountContacts.records.map((contact) => (
-        <article key={contact.id}>
-          <span>{contact.name}: </span>
-          <span>{contact.tell}</span>
-        </article>
+    <section className={css.contacts}>
+      {isLoading && <Spinner />}
+
+      {isEmptyContacs && <span>No tienes contactos</span>}
+
+      {accountContacts?.records.map((contact) => (
+        <Contact key={contact.id} contact={contact} />
       ))}
-    </div>
+    </section>
   );
 }

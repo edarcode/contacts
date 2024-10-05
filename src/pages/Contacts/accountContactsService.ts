@@ -4,10 +4,14 @@ import { EdarErr } from "../../errors/EdarErr";
 export const accountContactsService = async ({
   signal,
   token,
+  page,
 }: Params): Promise<AccountContacts | undefined> => {
   if (!token) return;
 
-  const res = await fetch(CONTACTS_BACK_URL.accountContacts, {
+  const url = new URL(CONTACTS_BACK_URL.accountContacts);
+  if (page) url.searchParams.append("page", page);
+
+  const res = await fetch(url, {
     signal,
     headers: {
       "Content-Type": "application/json",
@@ -28,6 +32,7 @@ export const accountContactsService = async ({
 type Params = {
   signal: AbortSignal;
   token?: string | null;
+  page?: string;
 };
 
 export type Contact = {

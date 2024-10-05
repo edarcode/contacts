@@ -2,4 +2,8 @@
   display: grid;
   place-content: center;
   height: 100%;
+  .wrapper {
+    min-height: 385px;
+    min-width: 365px;
+  }
 }

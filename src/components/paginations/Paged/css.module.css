@@ -1,0 +1,15 @@
+.paged {
+  display: flex;
+  align-items: center;
+
+  .back {
+    transform: rotate(180deg);
+  }
+
+  .page {
+    font-size: large;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+  }
+}

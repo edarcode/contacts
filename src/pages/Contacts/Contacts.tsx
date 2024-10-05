@@ -4,6 +4,7 @@ import { useAuth } from "../../auth/useAuth";
 import Contact from "./Contact/Contact";
 import css from "./css.module.css";
 import Spinner from "../../components/spinners/Spinner/Spinner";
+import Paged from "../../components/paginations/Paged/Paged";
 
 export default function Contacts() {
   const token = useAuth((auth) => auth.token);
@@ -26,6 +27,11 @@ export default function Contacts() {
       {accountContacts?.records.map((contact) => (
         <Contact key={contact.id} contact={contact} />
       ))}
+
+      <Paged
+        fn={(newPage) => console.log(newPage)}
+        totalPage={accountContacts?.totalPages}
+      />
     </section>
   );
 }

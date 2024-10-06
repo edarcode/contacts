@@ -3,6 +3,7 @@ import css from "./css.module.css";
 import Spinner from "../../components/spinners/Spinner/Spinner";
 import Paged from "../../components/paginations/Paged/Paged";
 import { useAccountContacts } from "./useAccountContacts";
+import InputText from "../../components/inputs/InputText/InputText";
 
 export default function Contacts() {
   const { accountContacts, page, isLoading, isEmpty, setPage } =
@@ -10,6 +11,8 @@ export default function Contacts() {
 
   return (
     <section className={css.contacts}>
+      <InputText />
+
       <div className={css.wrapper}>
         {isLoading && <Spinner />}
 

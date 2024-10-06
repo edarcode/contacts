@@ -4,8 +4,12 @@
   height: 100%;
 
   .wrapper {
-    min-height: 385px;
+    min-height: 345px;
     min-width: 365px;
     position: relative;
+  }
+
+  .paged {
+    justify-self: end;
   }
 }

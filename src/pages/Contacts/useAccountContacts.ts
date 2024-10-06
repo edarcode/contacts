@@ -5,7 +5,11 @@ import { accountContactsService } from "./accountContactsService";
 
 export const useAccountContacts = () => {
   const token = useAuth((auth) => auth.token);
-  const [filters, setFilters] = useState({ page: 1, limit: null, name: null });
+  const [filters, setFilters] = useState({
+    page: 1,
+    limit: 5,
+    name: undefined,
+  });
 
   const { data: accountContacts, isLoading } = useQuery({
     queryKey: ["accountContacts", { token, ...filters }],
@@ -13,7 +17,8 @@ export const useAccountContacts = () => {
       accountContactsService({
         signal: tanStack.signal,
         token,
-        page: String(filters.page),
+        page: filters.page,
+        limit: filters.limit,
       }),
     staleTime: 1000 * 60 * 60 * 24,
   });

@@ -1,7 +1,10 @@
 import IconBtn from "./IconBtn/IconBtn";
 import css from "./css.module.css";
+import { joinClass } from "./utils/joinClass";
 
-export default function Paged({ action, totalPage, page }: Props) {
+export default function Paged({ action, totalPage, page, className }: Props) {
+  const finalClass = joinClass([css.paged, className]);
+
   const newPrevPage = page - 1;
   const isValidPrevPage = newPrevPage >= 1;
 
@@ -21,7 +24,7 @@ export default function Paged({ action, totalPage, page }: Props) {
   };
 
   return (
-    <div className={css.paged}>
+    <div className={finalClass}>
       <IconBtn
         className={css.back}
         onClick={prev}
@@ -41,4 +44,5 @@ type Props = {
   page: number;
   totalPage: number;
   action: (newPage: number) => void;
+  className?: string;
 };

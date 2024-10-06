@@ -21,6 +21,7 @@ export default function Contacts() {
       </div>
 
       <Paged
+        className={css.paged}
         page={page}
         totalPage={accountContacts?.totalPages || 1}
         action={setPage}

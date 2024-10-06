@@ -5,11 +5,15 @@ export const accountContactsService = async ({
   signal,
   token,
   page,
+  limit,
+  name,
 }: Params): Promise<AccountContacts | undefined> => {
   if (!token) return;
 
   const url = new URL(CONTACTS_BACK_URL.accountContacts);
-  if (page) url.searchParams.append("page", page);
+  if (page) url.searchParams.append("page", `${page}`);
+  if (limit) url.searchParams.append("limit", `${limit}`);
+  if (name) url.searchParams.append("name", name);
 
   const res = await fetch(url, {
     signal,
@@ -32,7 +36,9 @@ export const accountContactsService = async ({
 type Params = {
   signal: AbortSignal;
   token?: string | null;
-  page?: string;
+  page?: number;
+  limit?: number;
+  name?: string;
 };
 
 export type Contact = {

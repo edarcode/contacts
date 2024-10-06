@@ -7,6 +7,15 @@
     min-height: 345px;
     min-width: 365px;
     position: relative;
+
+    .error,
+    .empty {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
   }
 
   .paged {

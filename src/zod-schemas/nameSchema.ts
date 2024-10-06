@@ -3,7 +3,6 @@ import { REGEX } from "../regex/regex";
 
 export const nameSchema = z
   .string()
-  .min(1, { message: "Mín 1 digíto." })
   .max(50, { message: "Max 50 digítos." })
   .refine((name) => !REGEX.mayus.test(name), {
     message: "Sin mayus.",
@@ -19,4 +18,10 @@ export const nameSchema = z
   })
   .refine((name) => !REGEX.numbers.test(name), {
     message: "Sin números.",
+  })
+  .refine((name) => !name.includes("/"), {
+    message: "Sin carácteres especiales.",
+  })
+  .refine((name) => !name.includes("-"), {
+    message: "Sin carácteres especiales.",
   });

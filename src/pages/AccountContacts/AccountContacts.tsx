@@ -5,7 +5,7 @@ import Paged from "../../components/paginations/Paged/Paged";
 import { useAccountContacts } from "./useAccountContacts";
 import InputText from "../../components/inputs/InputText/InputText";
 
-export default function Contacts() {
+export default function AccountContacts() {
   const { accountContacts, page, isLoading, isEmpty, setPage, name, setName } =
     useAccountContacts();
 

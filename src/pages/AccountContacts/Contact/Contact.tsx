@@ -1,6 +1,6 @@
 import { Contact as ContactType } from "../accountContactsService";
 import css from "./css.module.css";
-import defaultImg from "../Contact/profile.svg";
+import defaultImg from "./profile.svg";
 import { Delete } from "./icons/Delete";
 import { Edit } from "./icons/Edit";
 

@@ -25,6 +25,7 @@ export const useAccountContacts = () => {
         name: filters.name,
       }),
     staleTime: 1000 * 60 * 60 * 24,
+    enabled: !!token,
   });
 
   useEffect(() => {

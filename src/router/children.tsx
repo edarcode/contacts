@@ -1,5 +1,5 @@
 import Account from "../pages/Account/Account";
-import Contacts from "../pages/Contacts/Contacts";
+import AccountContacts from "../pages/AccountContacts/AccountContacts";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
@@ -36,7 +36,7 @@ export const CONTACTS = {
   display: "Contactos",
   element: (
     <RouteProtector>
-      <Contacts />
+      <AccountContacts />
     </RouteProtector>
   ),
 };

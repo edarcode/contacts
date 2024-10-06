@@ -1,24 +1,24 @@
 .btn {
-	--size-err: 20px;
-	position: relative;
-	border: none;
-	cursor: pointer;
-	border-radius: 50%;
-	width: 28px;
-	height: 28px;
-	padding: 0;
-	color: var(--t-main);
-	background-color: transparent;
+  --size-err: 20px;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  color: var(--t-main);
+  background-color: transparent;
 
-	&:disabled {
-		cursor: initial;
-		background-color: transparent;
-		color: var(--grey);
-		border: 2px solid var(--grey);
-	}
+  &:disabled {
+    cursor: initial;
+    background-color: transparent;
+    color: var(--grey);
+    border: 2px solid var(--grey);
+  }
 }
 
 .icon {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }

@@ -1,39 +1,44 @@
-import { useState } from "react";
 import IconBtn from "./IconBtn/IconBtn";
 import css from "./css.module.css";
 
-export default function Paged({ fn, totalPage }: Props) {
-  const [page, setPage] = useState(1);
+export default function Paged({ action, totalPage, page }: Props) {
+  const newPrevPage = page - 1;
+  const isValidPrevPage = newPrevPage >= 1;
 
-  const back = () => {
-    const isValidPage = page - 1 >= 1;
-    if (!isValidPage) return;
+  const newNextPage = page + 1;
+  const isValidNextPage = newNextPage <= totalPage;
 
-    const newPage = page - 1;
-    fn(newPage);
-    setPage(newPage);
+  const prev = () => {
+    if (!isValidPrevPage) return;
+    action(newPrevPage);
   };
 
   const next = () => {
     if (!totalPage) return;
-    const isValidPage = page + 1 <= totalPage;
-    if (!isValidPage) return;
+    if (!isValidNextPage) return;
 
-    const newPage = page + 1;
-    fn(newPage);
-    setPage(newPage);
+    action(newNextPage);
   };
 
   return (
     <div className={css.paged}>
-      <IconBtn className={css.back} onClick={back} />
+      <IconBtn
+        className={css.back}
+        onClick={prev}
+        disabled={!isValidPrevPage}
+      />
       <span className={css.page}>{page}</span>
-      <IconBtn className={css.next} onClick={next} />
+      <IconBtn
+        className={css.next}
+        onClick={next}
+        disabled={!isValidNextPage}
+      />
     </div>
   );
 }
 
 type Props = {
-  fn: (newPage: number) => void;
-  totalPage?: number;
+  page: number;
+  totalPage: number;
+  action: (newPage: number) => void;
 };

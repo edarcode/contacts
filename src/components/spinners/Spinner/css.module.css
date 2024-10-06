@@ -5,10 +5,10 @@
   border-top: 4px solid transparent; /* Color del borde superior (que girará) */
   border-radius: 50%;
   animation: spin 2s linear infinite;
-  /* position: absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
 }
 
 @keyframes spin {

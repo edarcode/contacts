@@ -6,12 +6,12 @@ import { useAccountContacts } from "./useAccountContacts";
 import InputText from "../../components/inputs/InputText/InputText";
 
 export default function Contacts() {
-  const { accountContacts, page, isLoading, isEmpty, setPage } =
+  const { accountContacts, page, isLoading, isEmpty, setPage, name, setName } =
     useAccountContacts();
 
   return (
     <section className={css.contacts}>
-      <InputText />
+      <InputText value={name} onChange={(e) => setName(e.target.value)} />
 
       <div className={css.wrapper}>
         {isLoading && <Spinner />}

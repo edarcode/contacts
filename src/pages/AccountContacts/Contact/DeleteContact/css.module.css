@@ -16,6 +16,10 @@
 
   .delete {
     background-color: var(--red);
+    min-width: 82px;
+    &:disabled {
+      background-color: transparent;
+    }
   }
 
   .noDelete {

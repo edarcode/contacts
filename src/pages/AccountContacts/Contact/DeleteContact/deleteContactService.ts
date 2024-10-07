@@ -2,43 +2,40 @@ import { CONTACTS_BACK_URL } from "../../../../consts/urls";
 import { EdarErr } from "../../../../errors/EdarErr";
 import { Fetch } from "../../../../hooks/useFetch";
 
-export const editContactService: Fetch<
-  EditContactPayload,
-  EditContactRes
+export const deleteContactService: Fetch<
+  DeleteContactPayload,
+  DeleteContactRes
 > = async ({ signal, payload }) => {
   if (!payload) return;
-  const { name, img, tell, token, id } = payload;
+
+  const { token, id } = payload;
 
   if (!token || !id) return;
 
-  const res = await fetch(CONTACTS_BACK_URL.editcontact + `/${id}`, {
+  const res = await fetch(CONTACTS_BACK_URL.deleteContact + `/${id}`, {
     signal,
-    method: "PATCH",
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Authorization: token,
     },
-    body: JSON.stringify({ name: name?.toLowerCase(), tell, img }),
   });
 
   if (!res.ok) {
     throw new EdarErr({
       status: res.status,
-      msg: "Err al editar contacto",
+      msg: "Err al eliminar contacto",
     });
   }
 
   return await res.json();
 };
 
-export type EditContactPayload = {
+export type DeleteContactPayload = {
   token?: string | null;
-  name?: string;
-  tell?: string;
-  img?: string;
   id: string;
 };
 
-export type EditContactRes = {
+export type DeleteContactRes = {
   msg: string;
 };

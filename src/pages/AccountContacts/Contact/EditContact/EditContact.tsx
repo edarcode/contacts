@@ -63,6 +63,7 @@ export default function EditContact({ contact, closeForm }: Props) {
       <input className={css.tell} type="tel" {...register("tell")} />
       <Cross className={css.close} onClick={closeForm} />
       <Button
+        className={css.btn}
         disabled={
           !!Object.keys(errors).length ||
           isSameContactWithForm ||

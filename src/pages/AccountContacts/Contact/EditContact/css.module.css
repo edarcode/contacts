@@ -58,7 +58,7 @@
   }
 }
 
-button {
+.btn {
   &:hover&:not(:disabled) {
     color: var(--green);
   }

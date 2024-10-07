@@ -30,6 +30,7 @@
 
   .edit,
   .delete {
+    cursor: pointer;
     justify-self: center;
   }
 }

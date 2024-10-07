@@ -52,7 +52,6 @@ export const useAccountContacts = () => {
       queryKey: ["accountContacts"],
     });
 
-    setFilters(initFilters);
     refetch();
   };
 

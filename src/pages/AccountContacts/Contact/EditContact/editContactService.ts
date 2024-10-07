@@ -1,18 +1,19 @@
 import { CONTACTS_BACK_URL } from "../../../../consts/urls";
 import { EdarErr } from "../../../../errors/EdarErr";
+import { Fetch } from "../../../../hooks/useFetch";
 
-export const editContactService = async ({
-  signal,
-  token,
-  name,
-  tell,
-  img,
-}: Params) => {
+export const editContactService: Fetch<
+  EditContactPayload,
+  EditContactRes
+> = async ({ signal, payload }) => {
+  if (!payload) return;
+  const { name, img, tell, token } = payload;
+
   if (!token) return;
 
   const res = await fetch(CONTACTS_BACK_URL.editcontact, {
     signal,
-    method: "POST",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       Authorization: token,
@@ -30,10 +31,13 @@ export const editContactService = async ({
   return await res.json();
 };
 
-type Params = {
-  signal: AbortSignal;
+export type EditContactPayload = {
   token?: string | null;
   name?: string;
   tell?: string;
   img?: string;
+};
+
+export type EditContactRes = {
+  msg: string;
 };

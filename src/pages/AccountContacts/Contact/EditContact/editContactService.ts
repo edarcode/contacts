@@ -7,18 +7,18 @@ export const editContactService: Fetch<
   EditContactRes
 > = async ({ signal, payload }) => {
   if (!payload) return;
-  const { name, img, tell, token } = payload;
+  const { name, img, tell, token, id } = payload;
 
-  if (!token) return;
+  if (!token || !id) return;
 
-  const res = await fetch(CONTACTS_BACK_URL.editcontact, {
+  const res = await fetch(CONTACTS_BACK_URL.editcontact + `/${id}`, {
     signal,
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       Authorization: token,
     },
-    body: JSON.stringify({ name, tell, img }),
+    body: JSON.stringify({ name: name?.toLowerCase(), tell, img }),
   });
 
   if (!res.ok) {
@@ -36,6 +36,7 @@ export type EditContactPayload = {
   name?: string;
   tell?: string;
   img?: string;
+  id: string;
 };
 
 export type EditContactRes = {

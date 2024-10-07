@@ -4,9 +4,6 @@ import { REGEX } from "../regex/regex";
 export const nameSchema = z
   .string()
   .max(50, { message: "Max 50 digítos." })
-  .refine((name) => !REGEX.mayus.test(name), {
-    message: "Sin mayus.",
-  })
   .refine((name) => !REGEX.startWithSpace.test(name), {
     message: "No empezar con espacios.",
   })

@@ -20,11 +20,14 @@ import Button from "../../../../components/buttons/Button/Button";
 
 export default function EditContact({ contact, closeForm }: Props) {
   const { img, name, tell, id } = contact;
+
   const { res, startFetch, loading, err } = useFetch<
     EditContactPayload,
     EditContactRes
   >(editContactService);
+
   const token = useAuth((auth) => auth.token);
+
   const refetchAccountContacts = useAccountContactsState(
     (state) => state.refetchAccountContacts
   );

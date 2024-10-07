@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../auth/useAuth";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { accountContactsService } from "./accountContactsService";
 import { accountContactsSchema } from "./accountContactsSchema";
 
@@ -14,6 +14,7 @@ export const useAccountContacts = () => {
   const token = useAuth((auth) => auth.token);
   const [filters, setFilters] = useState(initFilters);
   const [debouncedName, setDebouncedName] = useState(filters.name);
+  const queryClient = useQueryClient();
 
   const format = accountContactsSchema.safeParse({ token, ...filters });
 
@@ -46,6 +47,14 @@ export const useAccountContacts = () => {
   const setPage = (newPage: number) =>
     setFilters({ ...filters, page: newPage });
 
+  const refetchAccountContacts = () => {
+    queryClient.removeQueries({
+      queryKey: ["accountContacts"],
+    });
+
+    refetch();
+  };
+
   const errName = !format.success ? format.error?.issues[0].message : undefined;
   const isEmpty = !errName && !isLoading && !accountContacts?.records.length;
 
@@ -58,6 +67,6 @@ export const useAccountContacts = () => {
     name: debouncedName,
     setName: setDebouncedName,
     errName,
-    refetch,
+    refetchAccountContacts,
   };
 };

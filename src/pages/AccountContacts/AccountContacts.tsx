@@ -15,13 +15,15 @@ export default function AccountContacts() {
     name,
     setName,
     errName,
-    refetch,
+    refetchAccountContacts,
   } = useAccountContacts();
 
   const saveRefetchAccountContacts = useAccountContactsState(
     (state) => state.saveRefetchAccountContacts
   );
-  if (saveRefetchAccountContacts) saveRefetchAccountContacts(refetch);
+
+  if (saveRefetchAccountContacts)
+    saveRefetchAccountContacts(refetchAccountContacts);
 
   return (
     <section className={css.contacts}>

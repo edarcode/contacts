@@ -37,6 +37,7 @@ export default function Register() {
 
   return (
     <div className={css.register}>
+      <h1>Registrarse</h1>
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
         <InputText
           placeholder="ejemplo@gmail.com"

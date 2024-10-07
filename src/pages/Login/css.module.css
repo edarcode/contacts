@@ -2,6 +2,7 @@
   display: grid;
   height: 100%;
   place-content: center;
+  gap: var(--lg);
 
   .form {
     width: 300px;

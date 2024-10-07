@@ -41,6 +41,7 @@ export default function Login() {
 
   return (
     <div className={css.login}>
+      <h1>Iniciar sesión</h1>
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
         <InputText
           placeholder="ejemplo@gmail.com"

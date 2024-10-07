@@ -48,7 +48,7 @@ export type Contact = {
   tell: string;
 };
 
-type AccountContacts = {
+export type AccountContacts = {
   limit: number;
   page: number;
   records: Contact[];

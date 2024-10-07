@@ -1,9 +1,8 @@
-import Contact from "./Contact/Contact";
 import css from "./css.module.css";
-import Spinner from "../../components/spinners/Spinner/Spinner";
 import Paged from "../../components/paginations/Paged/Paged";
 import { useAccountContacts } from "./useAccountContacts";
 import InputText from "../../components/inputs/InputText/InputText";
+import WrapperContacts from "./WrapperContacts/WrapperContacts";
 
 export default function AccountContacts() {
   const {
@@ -17,23 +16,16 @@ export default function AccountContacts() {
     errName,
   } = useAccountContacts();
 
-  console.log(accountContacts);
-
   return (
     <section className={css.contacts}>
       <InputText value={name} onChange={(e) => setName(e.target.value)} />
 
-      <div className={css.wrapper}>
-        {errName && <span className={css.error}>{errName} 👀</span>}
-
-        {isLoading && <Spinner />}
-
-        {isEmpty && <span className={css.empty}>No hay contactos.</span>}
-
-        {accountContacts?.records.map((contact) => (
-          <Contact key={contact.id} contact={contact} />
-        ))}
-      </div>
+      <WrapperContacts
+        accountContacts={accountContacts}
+        errName={errName}
+        isEmpty={isEmpty}
+        isLoading={isLoading}
+      />
 
       <Paged
         className={css.paged}

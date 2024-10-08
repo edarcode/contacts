@@ -10,7 +10,7 @@ export default function WrapperContacts({
   accountContacts,
 }: Props) {
   return (
-    <div className={css.wrapper}>
+    <div className={css.wrapperContacts}>
       {errName && <span className={css.error}>{errName} 👀</span>}
 
       {isLoading && <Spinner />}

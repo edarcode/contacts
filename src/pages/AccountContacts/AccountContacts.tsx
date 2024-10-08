@@ -27,23 +27,25 @@ export default function AccountContacts() {
 
   return (
     <section className={css.contacts}>
-      <form className={css.form}>
-        <InputText value={name} onChange={(e) => setName(e.target.value)} />
-      </form>
+      <div className={css.container}>
+        <form className={css.form}>
+          <InputText value={name} onChange={(e) => setName(e.target.value)} />
+        </form>
 
-      <WrapperContacts
-        accountContacts={accountContacts}
-        errName={errName}
-        isEmpty={isEmpty}
-        isLoading={isLoading}
-      />
+        <WrapperContacts
+          accountContacts={accountContacts}
+          errName={errName}
+          isEmpty={isEmpty}
+          isLoading={isLoading}
+        />
 
-      <Paged
-        className={css.paged}
-        page={page}
-        totalPage={accountContacts?.totalPages || 1}
-        action={setPage}
-      />
+        <Paged
+          className={css.paged}
+          page={page}
+          totalPage={accountContacts?.totalPages || 1}
+          action={setPage}
+        />
+      </div>
     </section>
   );
 }

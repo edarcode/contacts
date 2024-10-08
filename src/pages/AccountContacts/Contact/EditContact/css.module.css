@@ -1,11 +1,10 @@
 .edit {
   display: grid;
-  grid-template-columns: auto 1fr 150px auto auto;
+  grid-template-columns: auto 1fr 2fr auto auto;
   gap: var(--sm);
   padding: var(--md);
   align-items: center;
-  width: 365px;
-  transform: scale(1.05);
+  transform: scale(1.04);
 
   .wrapperImg {
     position: relative;

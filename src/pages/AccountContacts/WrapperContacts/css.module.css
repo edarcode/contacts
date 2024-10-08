@@ -1,7 +1,6 @@
-.wrapper {
-  min-height: 345px;
-  min-width: 365px;
+.wrapperContacts {
   position: relative;
+  min-height: 340px;
 
   .error,
   .empty {

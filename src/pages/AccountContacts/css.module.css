@@ -15,3 +15,11 @@
     }
   }
 }
+
+@media (max-width: 380px) {
+  .contacts {
+    .container {
+      width: 310px;
+    }
+  }
+}

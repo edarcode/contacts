@@ -15,7 +15,7 @@ export default function WrapperContacts({
 
       {isLoading && <Spinner />}
 
-      {isEmpty && <span className={css.empty}>No hay contactos.</span>}
+      {isEmpty && <span className={css.empty}>📂</span>}
 
       {accountContacts?.records.map((contact) => (
         <Contact key={contact.id} contact={contact} />

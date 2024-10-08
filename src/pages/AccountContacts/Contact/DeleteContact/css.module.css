@@ -5,7 +5,6 @@
   padding: var(--md);
   gap: var(--sm);
   min-height: 64px;
-  width: 365px;
 
   .msg {
     line-height: 20px;

@@ -39,8 +39,7 @@ export default function DeleteContact({ contact, closeForm }: Props) {
       }}
     >
       <span className={css.msg}>
-        ¿Seguro que deseas eliminar a{" "}
-        <strong className={css.name}>{contact.name}</strong>?
+        ¿Deseas eliminar a <strong className={css.name}>{contact.name}</strong>?
       </span>
 
       <Btn

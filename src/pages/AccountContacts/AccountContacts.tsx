@@ -4,6 +4,7 @@ import { useAccountContacts } from "./useAccountContacts";
 import InputText from "../../components/inputs/InputText/InputText";
 import WrapperContacts from "./WrapperContacts/WrapperContacts";
 import { useAccountContactsState } from "./useAccountContactsState";
+import Btn from "./Contact/DeleteContact/Btn/Btn";
 
 export default function AccountContacts() {
   const {
@@ -39,12 +40,15 @@ export default function AccountContacts() {
           isLoading={isLoading}
         />
 
-        <Paged
-          className={css.paged}
-          page={page}
-          totalPage={accountContacts?.totalPages || 1}
-          action={setPage}
-        />
+        <div className={css.containerPaged}>
+          <Btn className={css.add}>Agregar</Btn>
+          <Paged
+            className={css.paged}
+            page={page}
+            totalPage={accountContacts?.totalPages || 1}
+            action={setPage}
+          />
+        </div>
       </div>
     </section>
   );

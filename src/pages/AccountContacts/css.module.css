@@ -10,8 +10,23 @@
       padding: var(--md);
     }
 
-    .paged {
-      justify-self: end;
+    .containerPaged {
+      display: flex;
+      align-items: center;
+      padding: var(--md);
+
+      .paged {
+        margin-left: auto;
+      }
+
+      .add {
+        background-color: var(--green);
+        min-width: 84px;
+
+        &:disabled {
+          background-color: transparent;
+        }
+      }
     }
   }
 }

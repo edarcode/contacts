@@ -4,8 +4,6 @@
   border: 1px solid transparent;
   padding: var(--sm) var(--md);
   cursor: pointer;
-  min-width: 125px;
-  min-height: 38px;
   border-radius: var(--md);
   display: grid;
   place-items: center;

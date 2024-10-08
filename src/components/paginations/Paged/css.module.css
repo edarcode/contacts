@@ -1,7 +1,6 @@
 .paged {
   display: flex;
   align-items: center;
-  padding: var(--md);
 
   .back {
     transform: rotate(180deg);
@@ -10,7 +9,7 @@
   .back,
   .next {
     &:hover&:not(:disabled) {
-      color: var(--pri);
+      color: var(--green);
     }
   }
 
@@ -19,16 +18,5 @@
     font-weight: bold;
     min-width: 30px;
     text-align: center;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  .paged {
-    .back,
-    .next {
-      &:hover&:not(:disabled) {
-        color: var(--l-pri);
-      }
-    }
   }
 }

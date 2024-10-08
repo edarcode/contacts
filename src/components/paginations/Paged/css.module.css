@@ -1,6 +1,7 @@
 .paged {
   display: flex;
   align-items: center;
+  padding: var(--md);
 
   .back {
     transform: rotate(180deg);

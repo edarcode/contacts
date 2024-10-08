@@ -3,6 +3,10 @@
   place-content: center;
   height: 100%;
 
+  .form {
+    padding: var(--md);
+  }
+
   .paged {
     justify-self: end;
   }

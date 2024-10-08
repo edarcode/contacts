@@ -18,11 +18,7 @@ export const useAccountContacts = () => {
 
   const format = accountContactsSchema.safeParse({ token, ...filters });
 
-  const {
-    data: accountContacts,
-    isLoading,
-    refetch,
-  } = useQuery({
+  const { data: accountContacts, isLoading } = useQuery({
     queryKey: ["accountContacts", { token, ...filters }],
     queryFn: (tanStack) =>
       accountContactsService({
@@ -52,7 +48,8 @@ export const useAccountContacts = () => {
       queryKey: ["accountContacts"],
     });
 
-    refetch();
+    setFilters(initFilters);
+    setDebouncedName("");
   };
 
   const errName = !format.success ? format.error?.issues[0].message : undefined;

@@ -18,7 +18,11 @@ export const useAccountContacts = () => {
 
   const format = accountContactsSchema.safeParse({ token, ...filters });
 
-  const { data: accountContacts, isLoading } = useQuery({
+  const {
+    data: accountContacts,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["accountContacts", { token, ...filters }],
     queryFn: (tanStack) =>
       accountContactsService({
@@ -30,7 +34,11 @@ export const useAccountContacts = () => {
       }),
     staleTime: 1000 * 60 * 60 * 24,
     enabled: format.success && !!token,
+    retry: 0,
   });
+
+  const errName = !format.success ? format.error?.issues[0].message : undefined;
+  const isEmpty = !errName && !isLoading && !accountContacts?.records.length;
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -40,20 +48,17 @@ export const useAccountContacts = () => {
     return () => clearTimeout(timeoutId);
   }, [debouncedName]);
 
+  useEffect(() => {
+    if (!isError) return;
+    setFilters((filters) => ({ ...filters, page: filters.page - 1 }));
+  }, [isError]);
+
   const setPage = (newPage: number) =>
     setFilters({ ...filters, page: newPage });
 
   const refetchAccountContacts = () => {
-    queryClient.removeQueries({
-      queryKey: ["accountContacts"],
-    });
-
-    setFilters(initFilters);
-    setDebouncedName("");
+    queryClient.refetchQueries({ queryKey: ["accountContacts"] });
   };
-
-  const errName = !format.success ? format.error?.issues[0].message : undefined;
-  const isEmpty = !errName && !isLoading && !accountContacts?.records.length;
 
   return {
     accountContacts,

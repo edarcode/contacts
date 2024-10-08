@@ -12,7 +12,9 @@
   .name,
   .tell {
     padding: var(--sm);
-    word-wrap: break-word;
+    white-space: nowrap; /* Evita que el texto haga varias líneas */
+    overflow: hidden; /* Oculta el texto que se desborda */
+    text-overflow: ellipsis; /* Muestra los "..." cuando el texto se corta */
   }
 
   .img {

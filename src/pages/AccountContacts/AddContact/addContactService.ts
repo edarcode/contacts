@@ -1,6 +1,6 @@
-import { CONTACTS_BACK_URL } from "../../consts/urls";
-import { EdarErr } from "../../errors/EdarErr";
-import { Fetch } from "../../hooks/useFetch";
+import { CONTACTS_BACK_URL } from "../../../consts/urls";
+import { EdarErr } from "../../../errors/EdarErr";
+import { Fetch } from "../../../hooks/useFetch";
 
 export const addContactService: Fetch<
   AddContactPayload,

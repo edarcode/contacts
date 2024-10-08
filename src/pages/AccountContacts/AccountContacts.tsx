@@ -4,9 +4,12 @@ import { useAccountContacts } from "./useAccountContacts";
 import InputText from "../../components/inputs/InputText/InputText";
 import WrapperContacts from "./WrapperContacts/WrapperContacts";
 import { useAccountContactsState } from "./useAccountContactsState";
-import Btn from "./Contact/DeleteContact/Btn/Btn";
+import { Add } from "../../components/icons/Add";
+import { useState } from "react";
+import AddContact from "./AddContact/AddContact";
 
 export default function AccountContacts() {
+  const [isAdding, setIsAdding] = useState(false);
   const {
     accountContacts,
     page,
@@ -40,8 +43,8 @@ export default function AccountContacts() {
           isLoading={isLoading}
         />
 
-        <div className={css.containerPaged}>
-          <Btn className={css.add}>Agregar</Btn>
+        <div className={css.containerPagedAndAdd}>
+          <Add className={css.add} onClick={() => setIsAdding(true)} />
           <Paged
             className={css.paged}
             page={page}
@@ -49,6 +52,8 @@ export default function AccountContacts() {
             action={setPage}
           />
         </div>
+
+        {isAdding && <AddContact closeForm={() => setIsAdding(false)} />}
       </div>
     </section>
   );

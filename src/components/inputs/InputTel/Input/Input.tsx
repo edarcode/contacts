@@ -19,7 +19,7 @@ export default forwardRef(function Input(props: Props, ref: any) {
       <input
         placeholder="🔍"
         {...extraProps}
-        type="text"
+        type="tel"
         ref={ref}
         className={finalClassInput}
       ></input>

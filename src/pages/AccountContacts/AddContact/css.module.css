@@ -1,0 +1,66 @@
+.form {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-surf);
+  display: grid;
+  place-content: center;
+
+  .wrapper {
+    display: grid;
+    gap: var(--md);
+    max-width: 250px;
+
+    .tell input,
+    .name input {
+    }
+
+    .wrapperImg {
+      position: relative;
+      width: 48px;
+      height: 48px;
+
+      .img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+      }
+
+      .inputFile {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .add {
+    background-color: var(--green);
+    min-width: 84px;
+
+    &:disabled {
+      background-color: transparent;
+    }
+  }
+
+  .cross {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(20%, -20%);
+    width: 48px;
+    height: 48px;
+    background-color: var(--bg-surf);
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translate(20%, -20%) scale(1.03);
+    }
+  }
+}

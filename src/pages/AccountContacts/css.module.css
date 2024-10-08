@@ -4,28 +4,32 @@
   height: 100%;
 
   .container {
+    position: relative;
     display: grid;
     width: 365px;
     .form {
       padding: var(--md);
     }
 
-    .containerPaged {
+    .containerPagedAndAdd {
       display: flex;
       align-items: center;
       padding: var(--md);
 
-      .paged {
-        margin-left: auto;
+      .add {
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+
+        &:hover {
+          transform: scale(1.03);
+          color: var(--green);
+        }
       }
 
-      .add {
-        background-color: var(--green);
-        min-width: 84px;
-
-        &:disabled {
-          background-color: transparent;
-        }
+      .paged {
+        margin-left: auto;
       }
     }
   }

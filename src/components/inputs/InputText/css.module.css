@@ -1,20 +1,20 @@
 .label {
-	--size-err: 20px;
+  --size-err: 20px;
 
-	display: grid;
-	gap: var(--xs);
-	cursor: text;
+  display: grid;
+  gap: var(--xs);
+  cursor: text;
 }
 
 .title {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .title,
 .err {
-	margin-left: 5px;
+  margin-left: 5px;
 }
 
 .err {
-	color: var(--red);
+  color: var(--red);
 }

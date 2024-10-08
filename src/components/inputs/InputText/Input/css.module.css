@@ -7,7 +7,6 @@
   border: 1px solid transparent;
   border-radius: var(--sm);
   padding: var(--sm) var(--md);
-  min-height: 38px;
   outline: transparent;
   background-color: var(--bg-surf);
   color: var(--t-sec);

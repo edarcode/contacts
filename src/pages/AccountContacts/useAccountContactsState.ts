@@ -3,7 +3,7 @@ import { devtools } from "zustand/middleware";
 
 type Params = {
   refetchAccountContacts: (() => void) | null;
-  saveRefetchAccountContacts: ((fn: () => void) => void) | null;
+  saveRefetchAccountContacts: (fn: () => void) => void;
 };
 
 export const useAccountContactsState = create<Params>()(

@@ -26,8 +26,7 @@ export default function AccountContacts() {
     (state) => state.saveRefetchAccountContacts
   );
 
-  if (saveRefetchAccountContacts)
-    saveRefetchAccountContacts(refetchAccountContacts);
+  saveRefetchAccountContacts(refetchAccountContacts);
 
   return (
     <section className={css.contacts}>

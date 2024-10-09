@@ -10,6 +10,8 @@ export const addContactService: Fetch<
 
   const { name, img, tell, token } = payload;
 
+  console.log(payload);
+
   if (!token) return;
 
   const res = await fetch(CONTACTS_BACK_URL.addContact, {

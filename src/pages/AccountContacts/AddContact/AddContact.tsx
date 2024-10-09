@@ -13,18 +13,20 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import defaultImg from "./profile.svg";
 import { useFetch } from "../../../hooks/useFetch";
 import { useAuth } from "../../../auth/useAuth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAccountContactsState } from "../useAccountContactsState";
 import InputText from "../../../components/inputs/InputText/InputText";
 import InputTel from "../../../components/inputs/InputTel/InputTel";
+import { uploadImg } from "../../../services/uploadImg";
 
 export default function AddContact({ closeForm }: Props) {
+  const [isUploadingImg, setIsUploadingImg] = useState(false);
   const token = useAuth((auth) => auth.token);
   const refetchAccountContacts = useAccountContactsState(
     (state) => state.refetchAccountContacts
   );
 
-  const { res, startFetch, loading, err } = useFetch<
+  const { res, loading, err, startFetch } = useFetch<
     AddContactPayload,
     AddContactRes
   >(addContactService);
@@ -37,17 +39,29 @@ export default function AddContact({ closeForm }: Props) {
     resolver: zodResolver(addContactSchema),
   });
 
-  const onSubmit = ({ name, tell }: AddContactForm) => {
-    if (!token) return;
-
-    startFetch({ token, name, tell });
-  };
-
   useEffect(() => {
     if (!res || !refetchAccountContacts) return;
     closeForm();
     refetchAccountContacts();
   }, [res, closeForm, refetchAccountContacts]);
+
+  const onSubmit = async ({ img, name, tell }: AddContactForm) => {
+    if (!token) return;
+
+    let imgUrl;
+    if (img) {
+      setIsUploadingImg(true);
+      try {
+        imgUrl = await uploadImg(img);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsUploadingImg(false);
+      }
+    }
+
+    startFetch({ token, name, tell, img: imgUrl });
+  };
 
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
@@ -74,8 +88,10 @@ export default function AddContact({ closeForm }: Props) {
 
         <Btn
           className={css.add}
-          disabled={!!Object.keys(errors).length || loading || !!res}
-          loading={loading}
+          disabled={
+            !!Object.keys(errors).length || loading || !!res || isUploadingImg
+          }
+          loading={loading || isUploadingImg}
           err={!!err}
         >
           Guardar contacto

@@ -14,12 +14,15 @@ import {
   EditContactRes,
 } from "./editContactService";
 import { useAuth } from "../../../../auth/useAuth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAccountContactsState } from "../../useAccountContactsState";
 import Button from "../../../../components/buttons/Button/Button";
+import { uploadImg } from "../../../../services/uploadImg";
 
 export default function EditContact({ contact, closeForm }: Props) {
   const { img, name, tell, id } = contact;
+
+  const [isUploadingImg, setIsUploadingImg] = useState(false);
 
   const { res, startFetch, loading, err } = useFetch<
     EditContactPayload,
@@ -43,7 +46,8 @@ export default function EditContact({ contact, closeForm }: Props) {
   });
 
   const form = watch();
-  const isSameContactWithForm = form.name === name && form.tell === tell;
+  const isSameContactWithForm =
+    form.name === name && form.tell === tell && !form.img?.length;
 
   useEffect(() => {
     if (!res || !refetchAccountContacts) return;
@@ -51,9 +55,22 @@ export default function EditContact({ contact, closeForm }: Props) {
     refetchAccountContacts();
   }, [res, closeForm, refetchAccountContacts]);
 
-  const onSubmit = (editForm: EditContactForm) => {
+  const onSubmit = async ({ name, tell, img }: EditContactForm) => {
     if (isSameContactWithForm) return;
-    startFetch({ name: editForm.name, tell: editForm.tell, token, id });
+
+    let imgUrl;
+    if (img) {
+      setIsUploadingImg(true);
+      try {
+        imgUrl = await uploadImg(img);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsUploadingImg(false);
+      }
+    }
+
+    startFetch({ name, tell, token, id, img: imgUrl });
   };
 
   return (
@@ -71,9 +88,10 @@ export default function EditContact({ contact, closeForm }: Props) {
           !!Object.keys(errors).length ||
           isSameContactWithForm ||
           loading ||
-          !!res
+          !!res ||
+          isUploadingImg
         }
-        loading={loading}
+        loading={loading || isUploadingImg}
         err={!!err}
       >
         <Check className={css.save} />

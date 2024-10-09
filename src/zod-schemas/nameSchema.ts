@@ -3,6 +3,7 @@ import { REGEX } from "../regex/regex";
 
 export const nameSchema = z
   .string()
+  .min(1, { message: "Min 1 digíto." })
   .max(50, { message: "Max 50 digítos." })
   .refine((name) => !REGEX.startWithSpace.test(name), {
     message: "No empezar con espacios.",

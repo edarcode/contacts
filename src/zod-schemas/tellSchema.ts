@@ -6,5 +6,5 @@ export const tellSchema = z
   .min(1, { message: "Mín 1 dígito." })
   .max(25, { message: "Max 25 dígitos." })
   .refine((tell) => REGEX.tell.test(tell), {
-    message: "+57 3332221100",
+    message: "+57-3332221100",
   });

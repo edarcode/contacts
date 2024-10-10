@@ -19,7 +19,11 @@ export const addContactService: Fetch<
       "Content-Type": "application/json",
       Authorization: token,
     },
-    body: JSON.stringify({ name: name.toLowerCase(), tell, img }),
+    body: JSON.stringify({
+      name: name.toLowerCase(),
+      tell: tell?.replace("-", " "),
+      img,
+    }),
   });
 
   if (!res.ok) {

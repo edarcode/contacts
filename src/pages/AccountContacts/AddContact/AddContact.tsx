@@ -89,7 +89,7 @@ export default function AddContact({ closeForm }: Props) {
         <InputTel
           className={css.tell}
           {...register("tell")}
-          placeholder="+57 3332221100"
+          placeholder="+57-3332221100"
           err={errors.tell?.message}
         />
 

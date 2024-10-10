@@ -20,7 +20,7 @@ import Button from "../../../../components/buttons/Button/Button";
 import { uploadImg } from "../../../../services/uploadImg";
 
 export default function EditContact({ contact, closeForm }: Props) {
-  const { img, name, tell, id } = contact;
+  const { name, tell, id, img } = contact;
 
   const [isUploadingImg, setIsUploadingImg] = useState(false);
 
@@ -73,10 +73,16 @@ export default function EditContact({ contact, closeForm }: Props) {
     startFetch({ name, tell, token, id, img: imgUrl });
   };
 
+  const file = watch()?.img?.[0];
+
   return (
     <form className={css.edit} onSubmit={handleSubmit(onSubmit)}>
       <div className={css.wrapperImg}>
-        <img className={css.img} src={img ?? defaultImg} alt={name} />
+        <img
+          className={css.img}
+          src={file ? URL.createObjectURL(file) : img || defaultImg}
+          alt={name}
+        />
         <input className={css.inputFile} type="file" {...register("img")} />
       </div>
       <input className={css.name} type="text" {...register("name")} />

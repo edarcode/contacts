@@ -11,10 +11,6 @@
     gap: var(--md);
     max-width: 250px;
 
-    .tell input,
-    .name input {
-    }
-
     .wrapperImg {
       position: relative;
       width: 48px;
@@ -24,6 +20,7 @@
         width: 48px;
         height: 48px;
         border-radius: 50%;
+        object-fit: cover;
       }
 
       .inputFile {

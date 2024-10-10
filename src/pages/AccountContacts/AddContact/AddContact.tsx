@@ -35,6 +35,7 @@ export default function AddContact({ closeForm }: Props) {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<AddContactForm>({
     resolver: zodResolver(addContactSchema),
   });
@@ -63,13 +64,19 @@ export default function AddContact({ closeForm }: Props) {
     startFetch({ token, name, tell, img: imgUrl });
   };
 
+  const file = watch()?.img?.[0];
+
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
       <Cross className={css.cross} onClick={closeForm} />
 
       <div className={css.wrapper}>
         <div className={css.wrapperImg}>
-          <img className={css.img} src={defaultImg} alt="Inserta una imagen" />
+          <img
+            className={css.img}
+            src={file ? URL.createObjectURL(file) : defaultImg}
+            alt="Inserta una imagen"
+          />
           <input className={css.inputFile} type="file" {...register("img")} />
         </div>
         <InputText

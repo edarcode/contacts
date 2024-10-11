@@ -34,7 +34,7 @@ export default function AccountContacts() {
         <form className={css.form}>
           <InputText
             value={name}
-            onChange={(e) => setName(String(e.target.value))}
+            onChange={(e) => setName(e.target.value.toLowerCase())}
           />
         </form>
 

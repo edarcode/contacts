@@ -32,7 +32,10 @@ export default function AccountContacts() {
     <section className={css.contacts}>
       <div className={css.container}>
         <form className={css.form}>
-          <InputText value={name} onChange={(e) => setName(e.target.value)} />
+          <InputText
+            value={name}
+            onChange={(e) => setName(String(e.target.value))}
+          />
         </form>
 
         <WrapperContacts

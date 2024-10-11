@@ -5,5 +5,5 @@ export const REGEX = {
   endWithSpace: /\s$/,
   mayus: /[A-Z]/,
   space: /\s/,
-  tell: /^\+\d{1,3}-\d{4,14}$/,
+  tell: /^\+\d{1,3}\*\d{4,14}$/,
 };

@@ -20,7 +20,7 @@ export const editContactService: Fetch<
     },
     body: JSON.stringify({
       name: name?.toLowerCase(),
-      tell: tell?.replace("-", " "),
+      tell: tell?.replace("*", " "),
       img,
     }),
   });

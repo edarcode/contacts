@@ -30,7 +30,7 @@ export default function Contact({ contact }: Props) {
         {name}
       </span>
       <span title={tell} className={css.tell}>
-        {tell?.replace(" ", "-")}
+        {tell}
       </span>
       <Edit className={css.edit} onClick={() => setIsEditing(true)} />
       <Delete className={css.delete} onClick={() => setIsDeleting(true)} />

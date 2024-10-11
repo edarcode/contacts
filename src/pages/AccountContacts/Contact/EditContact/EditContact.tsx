@@ -42,13 +42,13 @@ export default function EditContact({ contact, closeForm }: Props) {
     watch,
   } = useForm<EditContactForm>({
     resolver: zodResolver(editContactSchema),
-    defaultValues: { name, tell: tell?.replace(" ", "-") },
+    defaultValues: { name, tell: tell?.replace(" ", "*") },
   });
 
   const form = watch();
   const isSameContactWithForm =
     form.name === name &&
-    form.tell === tell?.replace(" ", "-") &&
+    form.tell === tell?.replace(" ", "*") &&
     !form.img?.length;
 
   useEffect(() => {

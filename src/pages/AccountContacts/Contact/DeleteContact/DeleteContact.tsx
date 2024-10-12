@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../../../auth/useAuth";
 import { useFetch } from "../../../../hooks/useFetch";
 import { Contact } from "../../accountContactsService";
@@ -10,8 +10,10 @@ import {
   deleteContactService,
 } from "./deleteContactService";
 import { useAccountContactsState } from "../../useAccountContactsState";
+import { deleteImg } from "../../../../services/deleteImg";
 
 export default function DeleteContact({ contact, closeForm }: Props) {
+  const [isDeletingImg, setIsDeletingImg] = useState(false);
   const token = useAuth((auth) => auth.token);
   const refetchAccountContacts = useAccountContactsState(
     (state) => state.refetchAccountContacts
@@ -31,9 +33,20 @@ export default function DeleteContact({ contact, closeForm }: Props) {
   return (
     <form
       className={css.form}
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
         if (!token || !contact.id) return;
+
+        if (contact.img) {
+          setIsDeletingImg(true);
+          try {
+            await deleteImg(contact.img);
+          } catch (err) {
+            console.log(err);
+          } finally {
+            setIsDeletingImg(false);
+          }
+        }
 
         startFetch({ id: contact.id, token });
       }}
@@ -44,9 +57,9 @@ export default function DeleteContact({ contact, closeForm }: Props) {
 
       <Btn
         className={css.delete}
-        disabled={!token || !contact.id || loading || !!res}
+        disabled={!token || !contact.id || loading || !!res || isDeletingImg}
         err={!!err}
-        loading={loading}
+        loading={loading || isDeletingImg}
       >
         Eliminar
       </Btn>
